@@ -1,6 +1,6 @@
 {
   "name": "ngx-notify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "typings": "index.d.ts",
   "description": "一个无须依赖HTML模板、极简Angular通知组件。",
