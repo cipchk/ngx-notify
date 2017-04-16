@@ -1,0 +1,472 @@
+<div class="row" style="margin-top: 50px;">
+    <div class="col-12 text-center" style="margin-bottom: 30px;">
+        <h1>Toast</h1>
+    </div>
+    <div class="col-6">
+        <h3>Create</h3>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <select class="form-control" id="type" name="type" [(ngModel)]="item.type">
+                <option value="success">success</option>
+                <option value="error">error</option>
+                <option value="info">info</option>
+                <option value="alert">alert</option>
+                <option value="bare">bare</option>
+                <option value="html">HTML</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" [(ngModel)]="item.title" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="content">Message</label>
+            <textarea class="form-control" id="content" [(ngModel)]="item.content" name="content" rows="3"></textarea>
+        </div>
+        <div class="form-group" *ngIf="item.type === 'html'">
+            <label for="className">ClassName</label>
+            <input type="text" id="className" [(ngModel)]="options.className" class="form-control">
+        </div>
+        <div class="form-group" *ngIf="item.type === 'html'">
+            <label for="html">Html Template</label>
+            <textarea class="form-control" id="html" [(ngModel)]="item.html" name="html" rows="3"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="onCreate()">CREATE</button>
+        <button type="button" class="btn btn-danger" (click)="onClearAll()">CLEAR ALL</button>
+    </div>
+    <div class="col-6">
+        <h3>Option</h3>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="theme">Theme</label>
+                <select class="form-control" id="theme" name="theme" [(ngModel)]="options.theme">
+                    <option value="default">default</option>
+                    <option value="bootstrap" title="支持V3|V4">bootstrap</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="timeout" class="col-form-label">Timeout</label>
+                <input type="number" min="1" id="timeout" [(ngModel)]="options.timeout" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="animate_in" class="col-form-label">Animate In(Need Animate.css)</label>
+                <select class="form-control" id="animate_in" [(ngModel)]="options.animate_in">
+                    <option value="notify-fade-in">默认</option>
+                    <optgroup label="Attention Seekers">
+                    <option value="bounce">bounce</option>
+                    <option value="flash">flash</option>
+                    <option value="pulse">pulse</option>
+                    <option value="rubberBand">rubberBand</option>
+                    <option value="shake">shake</option>
+                    <option value="swing">swing</option>
+                    <option value="tada">tada</option>
+                    <option value="wobble">wobble</option>
+                    <option value="jello">jello</option>
+                    </optgroup>
+
+                    <optgroup label="Bouncing Entrances">
+                    <option value="bounceIn">bounceIn</option>
+                    <option value="bounceInDown">bounceInDown</option>
+                    <option value="bounceInLeft">bounceInLeft</option>
+                    <option value="bounceInRight">bounceInRight</option>
+                    <option value="bounceInUp">bounceInUp</option>
+                    </optgroup>
+
+                    <optgroup label="Bouncing Exits">
+                    <option value="bounceOut">bounceOut</option>
+                    <option value="bounceOutDown">bounceOutDown</option>
+                    <option value="bounceOutLeft">bounceOutLeft</option>
+                    <option value="bounceOutRight">bounceOutRight</option>
+                    <option value="bounceOutUp">bounceOutUp</option>
+                    </optgroup>
+
+                    <optgroup label="Fading Entrances">
+                    <option value="fadeIn">fadeIn</option>
+                    <option value="fadeInDown">fadeInDown</option>
+                    <option value="fadeInDownBig">fadeInDownBig</option>
+                    <option value="fadeInLeft">fadeInLeft</option>
+                    <option value="fadeInLeftBig">fadeInLeftBig</option>
+                    <option value="fadeInRight">fadeInRight</option>
+                    <option value="fadeInRightBig">fadeInRightBig</option>
+                    <option value="fadeInUp">fadeInUp</option>
+                    <option value="fadeInUpBig">fadeInUpBig</option>
+                    </optgroup>
+
+                    <optgroup label="Fading Exits">
+                    <option value="fadeOut">fadeOut</option>
+                    <option value="fadeOutDown">fadeOutDown</option>
+                    <option value="fadeOutDownBig">fadeOutDownBig</option>
+                    <option value="fadeOutLeft">fadeOutLeft</option>
+                    <option value="fadeOutLeftBig">fadeOutLeftBig</option>
+                    <option value="fadeOutRight">fadeOutRight</option>
+                    <option value="fadeOutRightBig">fadeOutRightBig</option>
+                    <option value="fadeOutUp">fadeOutUp</option>
+                    <option value="fadeOutUpBig">fadeOutUpBig</option>
+                    </optgroup>
+
+                    <optgroup label="Flippers">
+                    <option value="flip">flip</option>
+                    <option value="flipInX">flipInX</option>
+                    <option value="flipInY">flipInY</option>
+                    <option value="flipOutX">flipOutX</option>
+                    <option value="flipOutY">flipOutY</option>
+                    </optgroup>
+
+                    <optgroup label="Lightspeed">
+                    <option value="lightSpeedIn">lightSpeedIn</option>
+                    <option value="lightSpeedOut">lightSpeedOut</option>
+                    </optgroup>
+
+                    <optgroup label="Rotating Entrances">
+                    <option value="rotateIn">rotateIn</option>
+                    <option value="rotateInDownLeft">rotateInDownLeft</option>
+                    <option value="rotateInDownRight">rotateInDownRight</option>
+                    <option value="rotateInUpLeft">rotateInUpLeft</option>
+                    <option value="rotateInUpRight">rotateInUpRight</option>
+                    </optgroup>
+
+                    <optgroup label="Rotating Exits">
+                    <option value="rotateOut">rotateOut</option>
+                    <option value="rotateOutDownLeft">rotateOutDownLeft</option>
+                    <option value="rotateOutDownRight">rotateOutDownRight</option>
+                    <option value="rotateOutUpLeft">rotateOutUpLeft</option>
+                    <option value="rotateOutUpRight">rotateOutUpRight</option>
+                    </optgroup>
+
+                    <optgroup label="Sliding Entrances">
+                    <option value="slideInUp">slideInUp</option>
+                    <option value="slideInDown">slideInDown</option>
+                    <option value="slideInLeft">slideInLeft</option>
+                    <option value="slideInRight">slideInRight</option>
+
+                    </optgroup>
+                    <optgroup label="Sliding Exits">
+                    <option value="slideOutUp">slideOutUp</option>
+                    <option value="slideOutDown">slideOutDown</option>
+                    <option value="slideOutLeft">slideOutLeft</option>
+                    <option value="slideOutRight">slideOutRight</option>
+                    
+                    </optgroup>
+                    
+                    <optgroup label="Zoom Entrances">
+                    <option value="zoomIn">zoomIn</option>
+                    <option value="zoomInDown">zoomInDown</option>
+                    <option value="zoomInLeft">zoomInLeft</option>
+                    <option value="zoomInRight">zoomInRight</option>
+                    <option value="zoomInUp">zoomInUp</option>
+                    </optgroup>
+                    
+                    <optgroup label="Zoom Exits">
+                    <option value="zoomOut">zoomOut</option>
+                    <option value="zoomOutDown">zoomOutDown</option>
+                    <option value="zoomOutLeft">zoomOutLeft</option>
+                    <option value="zoomOutRight">zoomOutRight</option>
+                    <option value="zoomOutUp">zoomOutUp</option>
+                    </optgroup>
+
+                    <optgroup label="Specials">
+                    <option value="hinge">hinge</option>
+                    <option value="rollIn">rollIn</option>
+                    <option value="rollOut">rollOut</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="animate_out" class="col-form-label">Animate Out(Need Animate.css)</label>
+                <select class="form-control" id="animate_in" [(ngModel)]="options.animate_out">
+                    <option value="notify-fade-out">默认</option>
+                    <optgroup label="Attention Seekers">
+                    <option value="bounce">bounce</option>
+                    <option value="flash">flash</option>
+                    <option value="pulse">pulse</option>
+                    <option value="rubberBand">rubberBand</option>
+                    <option value="shake">shake</option>
+                    <option value="swing">swing</option>
+                    <option value="tada">tada</option>
+                    <option value="wobble">wobble</option>
+                    <option value="jello">jello</option>
+                    </optgroup>
+
+                    <optgroup label="Bouncing Entrances">
+                    <option value="bounceIn">bounceIn</option>
+                    <option value="bounceInDown">bounceInDown</option>
+                    <option value="bounceInLeft">bounceInLeft</option>
+                    <option value="bounceInRight">bounceInRight</option>
+                    <option value="bounceInUp">bounceInUp</option>
+                    </optgroup>
+
+                    <optgroup label="Bouncing Exits">
+                    <option value="bounceOut">bounceOut</option>
+                    <option value="bounceOutDown">bounceOutDown</option>
+                    <option value="bounceOutLeft">bounceOutLeft</option>
+                    <option value="bounceOutRight">bounceOutRight</option>
+                    <option value="bounceOutUp">bounceOutUp</option>
+                    </optgroup>
+
+                    <optgroup label="Fading Entrances">
+                    <option value="fadeIn">fadeIn</option>
+                    <option value="fadeInDown">fadeInDown</option>
+                    <option value="fadeInDownBig">fadeInDownBig</option>
+                    <option value="fadeInLeft">fadeInLeft</option>
+                    <option value="fadeInLeftBig">fadeInLeftBig</option>
+                    <option value="fadeInRight">fadeInRight</option>
+                    <option value="fadeInRightBig">fadeInRightBig</option>
+                    <option value="fadeInUp">fadeInUp</option>
+                    <option value="fadeInUpBig">fadeInUpBig</option>
+                    </optgroup>
+
+                    <optgroup label="Fading Exits">
+                    <option value="fadeOut">fadeOut</option>
+                    <option value="fadeOutDown">fadeOutDown</option>
+                    <option value="fadeOutDownBig">fadeOutDownBig</option>
+                    <option value="fadeOutLeft">fadeOutLeft</option>
+                    <option value="fadeOutLeftBig">fadeOutLeftBig</option>
+                    <option value="fadeOutRight">fadeOutRight</option>
+                    <option value="fadeOutRightBig">fadeOutRightBig</option>
+                    <option value="fadeOutUp">fadeOutUp</option>
+                    <option value="fadeOutUpBig">fadeOutUpBig</option>
+                    </optgroup>
+
+                    <optgroup label="Flippers">
+                    <option value="flip">flip</option>
+                    <option value="flipInX">flipInX</option>
+                    <option value="flipInY">flipInY</option>
+                    <option value="flipOutX">flipOutX</option>
+                    <option value="flipOutY">flipOutY</option>
+                    </optgroup>
+
+                    <optgroup label="Lightspeed">
+                    <option value="lightSpeedIn">lightSpeedIn</option>
+                    <option value="lightSpeedOut">lightSpeedOut</option>
+                    </optgroup>
+
+                    <optgroup label="Rotating Entrances">
+                    <option value="rotateIn">rotateIn</option>
+                    <option value="rotateInDownLeft">rotateInDownLeft</option>
+                    <option value="rotateInDownRight">rotateInDownRight</option>
+                    <option value="rotateInUpLeft">rotateInUpLeft</option>
+                    <option value="rotateInUpRight">rotateInUpRight</option>
+                    </optgroup>
+
+                    <optgroup label="Rotating Exits">
+                    <option value="rotateOut">rotateOut</option>
+                    <option value="rotateOutDownLeft">rotateOutDownLeft</option>
+                    <option value="rotateOutDownRight">rotateOutDownRight</option>
+                    <option value="rotateOutUpLeft">rotateOutUpLeft</option>
+                    <option value="rotateOutUpRight">rotateOutUpRight</option>
+                    </optgroup>
+
+                    <optgroup label="Sliding Entrances">
+                    <option value="slideInUp">slideInUp</option>
+                    <option value="slideInDown">slideInDown</option>
+                    <option value="slideInLeft">slideInLeft</option>
+                    <option value="slideInRight">slideInRight</option>
+
+                    </optgroup>
+                    <optgroup label="Sliding Exits">
+                    <option value="slideOutUp">slideOutUp</option>
+                    <option value="slideOutDown">slideOutDown</option>
+                    <option value="slideOutLeft">slideOutLeft</option>
+                    <option value="slideOutRight">slideOutRight</option>
+                    
+                    </optgroup>
+                    
+                    <optgroup label="Zoom Entrances">
+                    <option value="zoomIn">zoomIn</option>
+                    <option value="zoomInDown">zoomInDown</option>
+                    <option value="zoomInLeft">zoomInLeft</option>
+                    <option value="zoomInRight">zoomInRight</option>
+                    <option value="zoomInUp">zoomInUp</option>
+                    </optgroup>
+                    
+                    <optgroup label="Zoom Exits">
+                    <option value="zoomOut">zoomOut</option>
+                    <option value="zoomOutDown">zoomOutDown</option>
+                    <option value="zoomOutLeft">zoomOutLeft</option>
+                    <option value="zoomOutRight">zoomOutRight</option>
+                    <option value="zoomOutUp">zoomOutUp</option>
+                    </optgroup>
+
+                    <optgroup label="Specials">
+                    <option value="hinge">hinge</option>
+                    <option value="rollIn">rollIn</option>
+                    <option value="rollOut">rollOut</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-form-label"></label>
+                <div class="form-check">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" [(ngModel)]="options.progress" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">show progress</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-form-label"></label>
+                <div class="form-check">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" [(ngModel)]="options.pauseOnHover" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">pause on hover</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-form-label"></label>
+                <div class="form-check">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" [(ngModel)]="options.clickToClose" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">click to close</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-form-label"></label>
+                <div class="form-check">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" [(ngModel)]="options.rtl" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">rtl</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h3 style="margin-top: 50px;">Notify Setting</h3>
+<div class="row">
+    <div class="form-group col-md-3">
+        <label for="position-x" class="col-form-label">X-axis</label>
+        <select class="form-control" [(ngModel)]="setting.position[0]" id="position-x">
+            <option value="left">left</option>
+            <option value="right">right</option>
+        </select>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="position-x-offset" class="col-form-label">X-axis offset</label>
+        <div class="input-group">
+            <input type="number" min="0" [(ngModel)]="setting.offset[0]" id="position-x-offset" class="form-control">
+            <div class="input-group-addon">px</div>
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="position-y" class="col-form-label">Y-axis</label>
+        <select class="form-control" [(ngModel)]="setting.position[1]" id="position-y">
+            <option value="top">top</option>
+            <option value="bottom">bottom</option>
+        </select>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="position-y-offset" class="col-form-label">Y-axis offset</label>
+        <div class="input-group">
+            <input type="number" min="0" [(ngModel)]="setting.offset[1]" id="position-y-offset" class="form-control">
+            <div class="input-group-addon">px</div>
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="min-width" class="col-form-label">min-width</label>
+        <div class="input-group">
+            <input type="number" min="0" [(ngModel)]="setting.minWidth" id="min-width" class="form-control">
+            <div class="input-group-addon">px</div>
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="max-width" class="col-form-label">max-width</label>
+        <div class="input-group">
+            <input type="number" min="0" [(ngModel)]="setting.maxWidth" id="max-width" class="form-control">
+            <div class="input-group-addon">px</div>
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="z-index" class="col-form-label">z-index</label>
+        <input type="number" min="0" [(ngModel)]="setting.zIndex" id="z-index" class="form-control">
+    </div>
+    <div class="form-group col-md-3">
+        <label class="col-form-label"></label>
+        <div class="form-check">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" [(ngModel)]="setting.lastOnBottom" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">last on bottom</span>
+            </label>
+        </div>
+    </div>
+    <div class="form-group col-12">
+        <button type="button" class="btn btn-primary" (click)="onSetting()">UPDATE SETTINGS</button>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 50px;">
+    <div class="col-12">
+        <h3>Logs</h3>
+        <p>你可以使用 `onCreate` 或 `onDestroy` 来跟踪所有创建与销毁的通知。</p>
+        <div class="logs" *ngIf="logs.length > 0">
+            <div class="log" *ngFor="let log of logs" [ngClass]="{'destroyed': log.destroyedOn}">
+                <span>{{log.title}}</span>
+                <span>{{log.content}}</span>
+                <span>CreatedOn: {{log.createdOn | date:'mediumTime'}}</span>
+                <span *ngIf="log.destroyedOn">DestroyedOn: {{log.destroyedOn | date:'mediumTime'}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 50px;">
+    <div class="col-12 text-center" style="margin-bottom: 30px;">
+        <h1>Browser Push</h1>
+    </div>
+    <div class="col-6">
+        <h3>Request Permission</h3>
+        <p>使用前需要用户授权！</p>
+        <p>
+            <code>this.notifyPushService.requestPermission()</code>
+        </p>
+        <button type="button" class="btn btn-primary" (click)="onRequestPermission()">REQUEST PERMISSION</button>
+    </div>
+    <div class="col-6">
+        <h3>Create</h3>
+        <p>一旦用户授权，就可以使用下面代码发起浏览器通知。</p>
+        <p>
+            <code>this.notifyPushService.create('未处理消息 10 条').subscribe();</code>
+        </p>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="push-title" class="col-form-label">Title</label>
+                <input type="text" id="push-title" [(ngModel)]="push.title" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="push-body" class="col-form-label">Body</label>
+                <input type="text" id="push-body" [(ngModel)]="push.body" class="form-control">
+            </div>
+            <div class="form-group col-md-12">
+                <label for="push-icon" class="col-form-label">Icon</label>
+                <input type="text" id="push-icon" [(ngModel)]="push.icon" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-form-label"></label>
+                <div class="form-check">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" [(ngModel)]="push.renotify" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">renotify（替换旧通知）</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-form-label"></label>
+                <div class="form-check">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" [(ngModel)]="push.silent" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">sound</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <button type="button" class="btn btn-primary" (click)="onPushCreate()">CREATE</button>
+            </div>
+        </div>
+    </div>
+</div>
