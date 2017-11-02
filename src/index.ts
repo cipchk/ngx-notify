@@ -20,14 +20,6 @@ export * from './components/notify.component';
 export * from './components/notify.service.config';
 export * from './components/notify.service';
 export * from './components/push.service';
-export * from './components/notify.module';
-
-/**
- * 通知服务工厂
- */
-export function notifyServiceFactory(resolver: ComponentFactoryResolver, applicationRef: ApplicationRef, injector: Injector, config: NotifyOptions) {
-    return new NotifyService(resolver, applicationRef, injector, config);
-}
 
 @NgModule({
     imports: [CommonModule],
@@ -36,16 +28,11 @@ export function notifyServiceFactory(resolver: ComponentFactoryResolver, applica
     entryComponents: [NotifyHolderComponent, NotifyComponent]
 })
 export class NotifyModule {
-    static forRoot(config: NotifyServiceConfig): ModuleWithProviders {
+    static forRoot(config?: NotifyServiceConfig): ModuleWithProviders {
         return {
             ngModule: NotifyModule,
             providers: [
-                { provide: NotifyServiceConfig, useValue: config },
-                {
-                    provide: NotifyService,
-                    useFactory: notifyServiceFactory,
-                    deps: [ComponentFactoryResolver, ApplicationRef, Injector, NotifyServiceConfig]
-                }
+                { provide: NotifyServiceConfig, useValue: config }
             ]
         };
     }

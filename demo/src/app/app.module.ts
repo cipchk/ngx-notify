@@ -15,7 +15,7 @@ import { DemoComponent } from './components/demo.component';
     FormsModule,
     HttpModule,
     CommonModule,
-    
+
     NotifyModule.forRoot({
         options: {
         },

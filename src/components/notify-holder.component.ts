@@ -1,17 +1,18 @@
+import { Component, OnInit, ViewEncapsulation, OnDestroy, EventEmitter, Injector } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
 import { defaultIcons } from './interfaces/icons';
 import { NotifyEvent } from './interfaces/notify-event.type';
 import { HolderOptions } from './interfaces/holder.options';
 import { Notify } from './interfaces/notify.type';
-import { Component, OnInit, ViewEncapsulation, OnDestroy, EventEmitter } from '@angular/core';
 import { NotifyComponent } from './notify.component';
 import { NotifyOptions } from './notify.types';
-import { Subscription } from "rxjs/Subscription";
-import { NotifyService } from "./notify.service";
+import { NotifyService } from './notify.service';
 
 @Component({
     selector: 'notify-holder',
     template: `
-    <div class="notifies" 
+    <div class="notifies"
         [ngStyle]="styles"
         [ngClass]="options.position"
         [class]="options.className">
@@ -19,22 +20,20 @@ import { NotifyService } from "./notify.service";
             *ngFor="let n of notifies; let i = index"
             [item]="n"></notify>
     </div>
-  `,
-    styles: [`
-    .notifies{position:fixed}
-` ],
+    `,
+    styleUrls: [ './notify-holder.scss' ],
     encapsulation: ViewEncapsulation.None
 })
 export class NotifyHolderComponent implements OnInit, OnDestroy {
 
-    public notifies: Notify[] = [];
-    public options: HolderOptions;
-    public styles: any = {};
+    notifies: Notify[] = [];
+    options: HolderOptions;
+    styles: any = {};
 
     private listener: Subscription;
 
-    constructor(private _service: NotifyService) {
-        this.listener = this._service.getChangeEmitter().subscribe(item => {
+    constructor(injector: Injector) {
+        this.listener = injector.get(NotifyService).getChangeEmitter().subscribe(item => {
             switch (item.command) {
                 case 'clear':
                     this.notifies = [];
@@ -90,7 +89,7 @@ export class NotifyHolderComponent implements OnInit, OnDestroy {
     }
 
     private getEmit(notify: Notify, to: boolean) {
-        let res: Notify = {
+        const res: Notify = {
             createdOn: notify.createdOn,
             id: notify.id,
             type: notify.type,

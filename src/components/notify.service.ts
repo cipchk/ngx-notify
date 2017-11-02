@@ -1,7 +1,7 @@
 import {
     Injectable, Optional, ComponentFactoryResolver, ApplicationRef, Injector, EmbeddedViewRef, EventEmitter
-} from "@angular/core";
-import { Subject } from "rxjs/Subject";
+} from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 import { HolderOptions } from './interfaces/holder.options';
 import { Notify } from './interfaces/notify.type';
@@ -31,7 +31,7 @@ export class NotifyService {
         }
     }
 
-    public set(notify: Notify, to: boolean = true) {
+    set(notify: Notify, to: boolean = true) {
         if (!this.notifyHolderComponent) {
             this.notifyHolderComponent = this.createNotifyHolder();
             this.updateSetting({});
@@ -47,14 +47,14 @@ export class NotifyService {
         return notify;
     }
 
-    public updateSetting(options: HolderOptions) {
+    updateSetting(options: HolderOptions) {
         this.emitter.next({ command: 'options', holderOptions: Object.assign({}, this.config.options, options) });
     }
 
     private createNotifyHolder(): NotifyHolderComponent {
-        let factory = this.resolver.resolveComponentFactory(NotifyHolderComponent),
-            ref = factory.create(this.injector),
-            rootNode = (ref.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
+        const factory = this.resolver.resolveComponentFactory(NotifyHolderComponent),
+              ref = factory.create(this.injector),
+              rootNode = (ref.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
 
         if (!this.container) {
             this.container = document.body;
@@ -69,39 +69,39 @@ export class NotifyService {
         return ref.instance;
     }
 
-    public getChangeEmitter() {
+    getChangeEmitter() {
         return this.emitter;
     }
 
-    public success(title: string, content?: string, override?: Options) {
+    success(title: string, content?: string, override?: Options) {
         return this.set(Object.assign({}, override, { title: title, content: content || '', type: 'success', icon: this.icons.success }));
     }
 
-    public error(title: string, content?: string, override?: Options) {
+    error(title: string, content?: string, override?: Options) {
         return this.set(Object.assign({}, override, { title: title, content: content || '', type: 'error', icon: this.icons.error }));
     }
 
-    public alert(title: string, content?: string, override?: Options) {
+    alert(title: string, content?: string, override?: Options) {
         return this.set(Object.assign({}, override, { title: title, content: content || '', type: 'alert', icon: this.icons.alert }));
     }
 
-    public info(title: string, content?: string, override?: Options) {
+    info(title: string, content?: string, override?: Options) {
         return this.set(Object.assign({}, override, { title: title, content: content || '', type: 'info', icon: this.icons.info }));
     }
 
-    public bare(title: string, content: string, type: string, override?: Options) {
+    bare(title: string, content: string, type: string, override?: Options) {
         return this.set(Object.assign({}, override, { title: title, content: content || '', type: type }));
     }
 
-    public html(title: string, content: string, html: string, type?: string, override?: Options) {
+    html(title: string, content: string, html: string, type?: string, override?: Options) {
         return this.set(Object.assign({}, override, { title: title, content: content || '', html: html, type: type }));
     }
 
-    public remove(id: string) {
+    remove(id: string) {
         this.emitter.next({ command: 'remove', id: id });
     }
 
-    public clear() {
+    clear() {
         this.emitter.next({ command: 'clear' });
     }
 }

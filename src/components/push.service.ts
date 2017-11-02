@@ -1,6 +1,6 @@
 import {
     Injectable, Optional, ComponentFactoryResolver, ApplicationRef, Injector, EmbeddedViewRef, EventEmitter
-} from "@angular/core";
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Permission, PushNotify } from './interfaces/push.type';
 

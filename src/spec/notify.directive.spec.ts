@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotifyModule } from '../ngx-notify';
+import { NotifyModule } from 'ngx-notify';
 
 const html = ``;
 
 describe('Component: ngx-notify', () => {
-  let fixture:ComponentFixture<any>;
-  let context:TestNGDragulaComponent;
-  let element:any;
-  let clean:any;
+  let fixture: ComponentFixture<any>;
+  let context: TestNGDragulaComponent;
+  let element: any;
+  let clean: any;
 
   beforeEach(() => {
     TestBed.configureTestingModule({

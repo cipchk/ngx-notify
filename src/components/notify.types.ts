@@ -6,7 +6,7 @@ import { EventEmitter } from '@angular/core';
 export interface NotifyOptions {
     /**
      * 类型
-     * 
+     *
      * @type {string}
      * @default 'success'
      */
@@ -14,27 +14,26 @@ export interface NotifyOptions {
 
     /**
      * 指定icon值
-     * 
+     *
      * @type {string}
-     * @memberOf NotifyOptions
      */
     icon?: string;
     /**
      * 标题
-     * 
+     *
      * @type {string}
      */
     title?: string;
     /**
      * 通知内容
-     * 
+     *
      * @type {string}
      */
     content?: string;
 
     /**
      * 位置
-     * 
+     *
      * @type {string}
      * @default 'top-right'
      */
@@ -42,7 +41,7 @@ export interface NotifyOptions {
 
     /**
      * 偏移值
-     * 
+     *
      * @type {{ x: number, y: number }}
      * @default { x: 20, y: 20 }
      */
@@ -50,7 +49,7 @@ export interface NotifyOptions {
 
     /**
      * z-index 值
-     * 
+     *
      * @type {number}
      * @default 1031
      */
@@ -58,7 +57,7 @@ export interface NotifyOptions {
 
     /**
      * 进度条
-     * 
+     *
      * @type {boolean}
      * @default false
      */
@@ -66,14 +65,14 @@ export interface NotifyOptions {
 
     /**
      * 链接地址，当存在时，点击进行跳转
-     * 
+     *
      * @type {string}
      */
     url?: string;
 
     /**
      * 链接目标
-     * 
+     *
      * @type {string}
      */
     target?: string;
@@ -83,21 +82,21 @@ export interface NotifyOptions {
      * {0} = type
      * {1} = title
      * {2} = message
-     * 
+     *
      * @type {string}
      */
     template?: string;
 
     /**
      * 显示时回调
-     * 
+     *
      * @type {Function}
      */
     onShow?: Function;
 
     /**
      * 关闭时回调
-     * 
+     *
      * @type {Function}
      */
     onClosed?: Function;
