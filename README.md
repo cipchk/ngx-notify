@@ -20,13 +20,15 @@ Import the `NotifyModule` in to your root `AppModule`.
 import { NotifyModule } from 'ngx-notify';
 
 @NgModule({
-    imports: [BrowserModule, NotifyModule.forRoot({
-            options: {
-            },
+    imports: [
+        BrowserModule,
+        NotifyModule.forRoot({
+            options: { },
             notify: {
                 progress: true
             }
-        })],
+        })
+    ],
     declarations: [AppComponent],
     bootstrap: [AppComponent]
 })
