@@ -1,0 +1,30 @@
+.logs {
+  width: 100%;
+  float: left;
+  background: #f1f1f1;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.log {
+  box-sizing: border-box;
+  float: left;
+  width: 100%;
+  padding: 10px;
+  color: #8bc34a;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.log.destroyed {
+  color: #f44336;
+}
+
+.notifies .notify.my-notify {
+  border-left: 4px solid #689f38;
+  .notify-title,
+  .notify-content {
+    font-size: 12px;
+  }
+}

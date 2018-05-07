@@ -1,0 +1,3 @@
+<div class="notifies" [ngStyle]="styles" [ngClass]="options.position" [class]="options.className">
+  <notify *ngFor="let n of notifies; let i = index" [item]="n"></notify>
+</div>
