@@ -8,7 +8,8 @@
 
 ## 示例
 
-[在线示例](https://cipchk.github.io/ngx-notify/)
+- [在线示例](https://cipchk.github.io/ngx-notify/)
+- [Stackblitz](https://stackblitz.com/edit/ngx-notify)
 
 ## 安装
 
@@ -110,7 +111,7 @@ this.notifyService.success('title', 'content', { timeout: 1000 * 10 });
 如果你需要使用 `bootstrap` （支持V3、V4）的话，需要引入 `bootstrap.css`，例如：
 
 ```
-this.notifyService.success('title', 'content', { 
+this.notifyService.success('title', 'content', {
     theme: 'bootstrap'
 });
 ```
@@ -118,7 +119,7 @@ this.notifyService.success('title', 'content', {
 或者，也可以自定义模板。
 
 ```
-this.notifyService.success('title', 'content', { 
+this.notifyService.success('title', 'content', {
     className: 'my-notify',
     html: `<div class="notify-title">{title}</div>
 <div class="notify-content">{content}</div>
@@ -136,9 +137,9 @@ this.notifyService.success('title', 'content', {
 默认淡入淡出效果是由CSS实现，如果需要获得更多动画效果，可以引入`Animate.css`，例如：
 
 ```
-this.notifyService.success('title', 'content', { 
-    animate_in: 'fadeInLeft', 
-    animate_out: 'fadeInRight' 
+this.notifyService.success('title', 'content', {
+    animate_in: 'fadeInLeft',
+    animate_out: 'fadeInRight'
 });
 ```
 

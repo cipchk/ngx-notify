@@ -1,0 +1,6 @@
+<div class="notify" (click)="onClick($event)" [ngClass]="classes" [class]="animate" (mouseenter)="onEnter()" (mouseleave)="onLeave()">
+  <div [innerHTML]="html"></div>
+  <div class="notify-progress" *ngIf="item.progress">
+    <span [ngStyle]="{'width': progressWidth + '%'}"></span>
+  </div>
+</div>

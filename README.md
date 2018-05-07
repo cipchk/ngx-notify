@@ -37,7 +37,8 @@ export class AppModule { }
 
 ## Usage & Demo
 
-[Live Demo](https://cipchk.github.io/ngx-notify/)
+- [Live Demo](https://cipchk.github.io/ngx-notify/)
+- [Stackblitz](https://stackblitz.com/edit/ngx-notify)
 
 # Troubleshooting
 
