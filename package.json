@@ -1,6 +1,6 @@
 {
   "name": "ngx-notify",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "./bundles/notify.umd.js",
   "module": "./esm5/notify.js",
   "es2015": "./esm2015/notify.js",
