@@ -1,4 +1,9 @@
+# 注意
+
+[ngx-toastr](https://www.npmjs.com/package/ngx-toastr) 比 `ngx-notify` 更优秀，如果可以，建议优先使用；我依然对 `ngx-notify` 保持更新。
+
 # ngx-notify
+
 一个无须依赖HTML模板、极简Angular通知组件。
 
 [![NPM version](https://img.shields.io/npm/v/ngx-notify.svg)](https://www.npmjs.com/package/ngx-notify)
